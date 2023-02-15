@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!-- comment node -->
+    <!--Hi! I am the parent of div container with ID child and grandParent of div container with ID grandchild   -->
+    <!--  Hi! I am parent of div container with ID grandchild and child of div container with ID parent -->
+    <!-- Hi! I am grandchild of div container with ID parent and child of div container with ID child -->
+    <div id="parent">
+        I am the parent wit ID:parent
+        <div id="child">
+            I am the child with ID:child
+            <div id="grandchild">
+                I am the grandchild with ID:grandchild
+            </div>
+        </div>
+    </div>
+    <p id="message">
+
+    </p>
+    <button id="getParent">Parent</button>
+    <button id="getchild">child</button>
+    <button id="getgrandchild">grandchild</button>
+    <script>
+        let message = document.getElementById("message")
+        document.getElementById("getParent").addEventListener("click", () => {
+            message.innerHTML = "I'm parent of child ID container & grandParent of grandchild ID container"
+
+        })
+        document.getElementById("getchild").addEventListener("click", () => {
+            message.innerHTML = "I'm parent of grandchild ID container & child of  parent ID container"
+
+
+        })
+        document.getElementById("getgrandchild").addEventListener("click", () => {
+            message.innerHTML = "I'm  grandchild of  parent ID container & child of child ID container"
+
+        })
+        // element node
+        var a = document.getElementById("message").nodeType;
+        console.log(a) //1 
+
+        //attribute node
+        const x = document.getElementsByTagName("p")[0];
+        const y = x.getAttributeNode("id").nodeType;
+        console.log(y) //2 
+
+        //text node
+        let textNode = document.createTextNode("Hello World");
+        let b = document.body.appendChild(textNode);
+        let text = textNode.nodeType;
+        console.log(text) // 3
+        //console.log(b) // Hello World
+        // b.nodeType = 3
+
+        //comment node
+        const node = document.COMMENT_NODE
+        console.log(node) // 8
+        console.warn("you should comment")
+        
+// The nodeType property returns the node type, as a number, of the specified node.
+
+// If the node is an element node, the nodeType property will return 1.
+
+// If the node is an attribute node, the nodeType property will return 2.
+
+// If the node is a text node, the nodeType property will return 3.
+
+// If the node is a comment node, the nodeType property will return 8.
+
+// This property is read-only
+    </script>
+</body>
+
+</html>
